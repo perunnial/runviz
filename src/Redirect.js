@@ -3,10 +3,13 @@ import React from 'react'
 import { getAuthCodeFromUrl, getTokensFromAuthCode } from './utils'
 
 class Redirect extends React.Component {
-  state= {
-    accessToken: {},
-    refreshToken: {}
-  };
+  constructor (props) {
+    super(props)
+    this.state = {
+      accessToken: '',
+      refreshToken: ''
+    }
+  }
 
   componentDidMount () {
     const logIn = async () => {
@@ -20,8 +23,6 @@ class Redirect extends React.Component {
           refreshToken: tokenResponse.refresh_token
         }
       )
-      console.log(this.state.accessToken)
-      console.log(this.state.refreshToken)
     }
     logIn()
   }
@@ -30,6 +31,8 @@ class Redirect extends React.Component {
     return (
       <div>
           <h2>Redirect</h2>
+          <h3>{this.state.accessToken}</h3>
+          <h3>{this.state.refreshToken}</h3>
       </div>
     )
   }
