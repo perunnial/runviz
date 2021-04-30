@@ -16,9 +16,9 @@ class Intermediate extends React.Component {
   componentDidMount () {
     const logIn = async () => {
       const authCode = getAuthCodeFromUrl(window.location.href)
-      console.log(authCode)
+      // console.log(authCode)
       const tokenResponse = await getTokensFromAuthCode(authCode)
-      console.log(tokenResponse)
+      // console.log(tokenResponse)
       this.setState(
         {
           accessToken: tokenResponse.access_token,
