@@ -1,7 +1,7 @@
 import React from 'react'
 
 import Home from './Home'
-import Redirect from './Redirect'
+import Intermediate from './Intermediate'
 import LoggedIn from './LoggedIn'
 import NotFound from './NotFound'
 
@@ -15,7 +15,7 @@ function App () {
         <Link to="/">Home</Link>
         <Switch>
           <Route exact path='/' component={Home} />
-          <Route path='/redirect' component={Redirect} />
+          <Route path='/intermediate' component={Intermediate} />
           <Route path='/loggedin' component={LoggedIn} />
           <Route component={NotFound} />
         </Switch>

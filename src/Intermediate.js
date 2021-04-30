@@ -1,8 +1,10 @@
 import React from 'react'
 
+import { Redirect } from 'react-router-dom'
+
 import { getAuthCodeFromUrl, getTokensFromAuthCode } from './utils'
 
-class Redirect extends React.Component {
+class Intermediate extends React.Component {
   constructor (props) {
     super(props)
     this.state = {
@@ -28,9 +30,12 @@ class Redirect extends React.Component {
   }
 
   render () {
+    if (this.state.accessToken !== '') {
+      return <Redirect to='/loggedin' />
+    }
     return (
       <div>
-          <h2>Redirect</h2>
+          <h2>Intermediate</h2>
           <h3>{this.state.accessToken}</h3>
           <h3>{this.state.refreshToken}</h3>
       </div>
@@ -38,4 +43,4 @@ class Redirect extends React.Component {
   }
 }
 
-export default Redirect
+export default Intermediate
