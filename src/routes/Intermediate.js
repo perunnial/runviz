@@ -4,6 +4,9 @@ import { Redirect } from 'react-router-dom'
 
 import { getAuthCodeFromUrl, getTokensFromAuthCode } from '../utils'
 
+import store from '../redux/store'
+import { setTokenResponse } from '../redux/actions'
+
 class Intermediate extends React.Component {
   constructor (props) {
     super(props)
@@ -19,12 +22,14 @@ class Intermediate extends React.Component {
       // console.log(authCode)
       const tokenResponse = await getTokensFromAuthCode(authCode)
       // console.log(tokenResponse)
+      store.dispatch(setTokenResponse(tokenResponse))
       this.setState(
         {
           accessToken: tokenResponse.access_token,
           refreshToken: tokenResponse.refresh_token
         }
       )
+      // store.dispatch(setTokenResponse(tokenResponse))
     }
     logIn()
   }
