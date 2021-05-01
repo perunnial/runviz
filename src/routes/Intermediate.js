@@ -1,11 +1,10 @@
 import React from 'react'
-
 import { Redirect } from 'react-router-dom'
 
 import { getAuthCodeFromUrl, getTokensFromAuthCode } from '../utils'
 
-import store from '../redux/store'
 import { setTokenResponse } from '../redux/actions'
+import store from '../redux/store'
 
 class Intermediate extends React.Component {
   constructor (props) {
