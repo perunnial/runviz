@@ -1,9 +1,9 @@
 import React from 'react'
 
-import Home from './Home'
-import Intermediate from './Intermediate'
-import LoggedIn from './LoggedIn'
-import NotFound from './NotFound'
+import Home from './routes/Home'
+import Intermediate from './routes/Intermediate'
+import LoggedIn from './routes/LoggedIn'
+import NotFound from './routes/NotFound'
 
 import { BrowserRouter, Route, Link, Switch } from 'react-router-dom'
 

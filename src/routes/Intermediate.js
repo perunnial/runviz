@@ -2,7 +2,7 @@ import React from 'react'
 
 import { Redirect } from 'react-router-dom'
 
-import { getAuthCodeFromUrl, getTokensFromAuthCode } from './utils'
+import { getAuthCodeFromUrl, getTokensFromAuthCode } from '../utils'
 
 class Intermediate extends React.Component {
   constructor (props) {
