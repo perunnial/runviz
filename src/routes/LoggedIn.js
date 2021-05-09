@@ -22,8 +22,9 @@ class LoggedIn extends React.Component {
 
       this.setState(
         {
-          athlete: athleteResponse,
-          athleteStats: athleteStatsResponse
+          athleteName: athleteResponse.firstname + ' ' + athleteResponse.lastname,
+          athleteProfile: athleteResponse.profile,
+          runTotalDistance: parseInt(athleteStatsResponse.all_run_totals.distance) / 1000
         }
       )
     }
@@ -35,8 +36,9 @@ class LoggedIn extends React.Component {
     return (
       <div>
         <h2>LoggedIn</h2>
-        <h3> {this.state.athlete.firstname} {this.state.athlete.laststname} </h3>
-        <img src={this.state.athlete.profile} alt="athlete.profile"></img>
+        <h3> {this.state.athleteName} </h3>
+        <img src={this.state.athleteProfile} alt="athlete.profile"></img>
+        <h3> Total Run Distance = {this.state.runTotalDistance} km </h3>
       </div>
     )
   }
