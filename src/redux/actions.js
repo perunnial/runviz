@@ -4,3 +4,10 @@ export const setTokenResponse = (tokenResponse) => {
     payload: tokenResponse
   }
 }
+
+export const setAthleteStats = (athleteStatsResponse) => {
+  return {
+    type: 'SET_ATHLETE_STATS',
+    payload: athleteStatsResponse
+  }
+}

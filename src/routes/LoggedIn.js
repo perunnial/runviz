@@ -3,6 +3,7 @@ import React from 'react'
 import { getAthlete, getAthleteStats } from '../utils'
 
 import store from '../redux/store'
+import { setAthleteStats } from '../redux/actions'
 
 class LoggedIn extends React.Component {
   constructor (props) {
@@ -23,12 +24,14 @@ class LoggedIn extends React.Component {
       const athleteStatsResponse = await getAthleteStats(fetchedTokenResponse.access_token, fetchedTokenResponse.athlete.id)
       console.log(athleteStatsResponse)
 
+      store.dispatch(setAthleteStats(athleteStatsResponse))
       this.setState(
         {
           athlete: athleteResponse,
           athleteStats: athleteStatsResponse
         }
       )
+      store.dispatch(setAthleteStats(athleteStatsResponse))
     }
 
     fetchData()
