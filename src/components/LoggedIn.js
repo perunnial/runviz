@@ -16,13 +16,13 @@ class LoggedIn extends React.Component {
 
   componentDidMount () {
     const fetchData = async () => {
-      const athleteResponse = await getAthlete(this.props.accessToken)
+      const athleteResponse = await getAthlete(this.props.location.state.accessToken)
       console.log(athleteResponse)
 
-      const athleteStatsResponse = await getAthleteStats(this.props.accessToken, athleteResponse.id)
+      const athleteStatsResponse = await getAthleteStats(this.props.location.state.accessToken, athleteResponse.id)
       console.log(athleteStatsResponse)
 
-      const activitiesResponse = await getActivities(this.props.accessToken)
+      const activitiesResponse = await getActivities(this.props.location.state.accessToken)
       console.log(activitiesResponse)
 
       this.setState(
@@ -58,7 +58,7 @@ class LoggedIn extends React.Component {
 }
 
 LoggedIn.propTypes = {
-  accessToken: PropTypes.string.isRequired
+  location: PropTypes.object.isRequired
 }
 
 export default LoggedIn

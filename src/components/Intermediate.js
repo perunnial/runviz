@@ -1,8 +1,7 @@
 import React from 'react'
+import { Redirect } from 'react-router'
 
 import { getAuthCodeFromUrl, getTokensFromAuthCode } from '../utils'
-
-import LoggedIn from './LoggedIn'
 
 class Intermediate extends React.Component {
   constructor (props) {
@@ -27,11 +26,11 @@ class Intermediate extends React.Component {
 
   render () {
     if (this.state.accessToken !== '') {
-      return (
-        <div>
-          <LoggedIn accessToken={this.state.accessToken} />
-        </div>
-      )
+      return <Redirect to = {{
+        pathname: '/loggedin',
+        state: { accessToken: this.state.accessToken }
+      }}
+      />
     }
     return (
       <div>
