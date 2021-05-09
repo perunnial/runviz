@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import { getAthlete, getAthleteStats } from '../utils'
+import { getAthlete, getAthleteStats, getActivities } from '../utils'
 
 class LoggedIn extends React.Component {
   constructor (props) {
@@ -19,6 +19,9 @@ class LoggedIn extends React.Component {
 
       const athleteStatsResponse = await getAthleteStats(this.props.accessToken, athleteResponse.id)
       console.log(athleteStatsResponse)
+
+      const activitiesResponse = await getActivities(this.props.accessToken)
+      console.log(activitiesResponse)
 
       this.setState(
         {

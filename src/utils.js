@@ -37,3 +37,14 @@ export const getAthleteStats = async (accessToken, athleteId) => {
     console.error(error)
   }
 }
+
+export const getActivities = async (accessToken) => {
+  try {
+    const request = 'https://www.strava.com/api/v3/athlete/activities'
+    const authHeader = { headers: { Authorization: `Bearer ${accessToken}` } }
+    const response = await axios.get(request, authHeader)
+    return response.data
+  } catch (error) {
+    console.error(error)
+  }
+}
