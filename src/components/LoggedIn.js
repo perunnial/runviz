@@ -3,6 +3,8 @@ import PropTypes from 'prop-types'
 
 import { getAthlete, getAthleteStats, getActivities } from '../utils'
 
+import Activities from './Activities'
+
 class LoggedIn extends React.Component {
   constructor (props) {
     super(props)
@@ -27,7 +29,8 @@ class LoggedIn extends React.Component {
         {
           athleteName: athleteResponse.firstname + ' ' + athleteResponse.lastname,
           athleteProfile: athleteResponse.profile,
-          runTotalDistance: parseInt(athleteStatsResponse.all_run_totals.distance) / 1000
+          runTotalDistance: parseInt(athleteStatsResponse.all_run_totals.distance) / 1000,
+          activities: activitiesResponse
         }
       )
     }
@@ -40,8 +43,15 @@ class LoggedIn extends React.Component {
       <div>
         <h2>LoggedIn</h2>
         <h3> {this.state.athleteName} </h3>
-        <img src={this.state.athleteProfile} alt="athlete.profile"></img>
+        <img src={this.state.athleteProfile} alt="athleteProfile"></img>
         <h3> Total Run Distance = {this.state.runTotalDistance} km </h3>
+        {this.state.activities
+          ? (
+          <Activities activities={this.state.activities} />
+            )
+          : (
+          <h4> Loading Activities... </h4>
+            )}
       </div>
     )
   }

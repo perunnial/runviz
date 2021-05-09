@@ -29,7 +29,7 @@ class Intermediate extends React.Component {
     if (this.state.accessToken !== '') {
       return (
         <div>
-          <LoggedIn accessToken={this.state.accessToken} athleteId={this.state.athleteId}/>
+          <LoggedIn accessToken={this.state.accessToken} />
         </div>
       )
     }
