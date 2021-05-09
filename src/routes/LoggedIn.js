@@ -1,9 +1,7 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 
 import { getAthlete, getAthleteStats } from '../utils'
-
-import store from '../redux/store'
-import { setAthleteStats } from '../redux/actions'
 
 class LoggedIn extends React.Component {
   constructor (props) {
@@ -16,39 +14,36 @@ class LoggedIn extends React.Component {
 
   componentDidMount () {
     const fetchData = async () => {
-      const fetchedTokenResponse = store.getState().tokenResponse.tr
-
-      const athleteResponse = await getAthlete(fetchedTokenResponse.access_token)
+      const athleteResponse = await getAthlete(this.props.accessToken)
       console.log(athleteResponse)
 
-      const athleteStatsResponse = await getAthleteStats(fetchedTokenResponse.access_token, fetchedTokenResponse.athlete.id)
+      const athleteStatsResponse = await getAthleteStats(this.props.accessToken, athleteResponse.id)
       console.log(athleteStatsResponse)
 
-      store.dispatch(setAthleteStats(athleteStatsResponse))
       this.setState(
         {
           athlete: athleteResponse,
           athleteStats: athleteStatsResponse
         }
       )
-      store.dispatch(setAthleteStats(athleteStatsResponse))
     }
 
     fetchData()
   }
 
   render () {
-    const fetchedTokenResponse = store.getState().tokenResponse.tr
-
     return (
       <div>
         <h2>LoggedIn</h2>
-        <h3>{fetchedTokenResponse.athlete.firstname} {fetchedTokenResponse.athlete.lastname}</h3>
-        <img src={fetchedTokenResponse.athlete.profile} alt="athlete profile"></img>
+        <h3> {this.state.athlete.firstname} {this.state.athlete.laststname} </h3>
+        <img src={this.state.athlete.profile} alt="athlete.profile"></img>
       </div>
     )
-    // <h4>Lifetime Run Distance = {this.state.athleteStats.all_run_totals.distance}</h4>
   }
+}
+
+LoggedIn.propTypes = {
+  accessToken: PropTypes.string.isRequired
 }
 
 export default LoggedIn
