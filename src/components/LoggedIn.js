@@ -4,13 +4,16 @@ import PropTypes from 'prop-types'
 import { getAthlete, getAthleteStats, getActivities } from '../utils'
 
 import Activities from './Activities'
+import CalendarChart from './CalendarChart'
 
 class LoggedIn extends React.Component {
   constructor (props) {
     super(props)
     this.state = {
-      athlete: {},
-      athleteStats: {}
+      athleteName: '',
+      athleteProfile: '',
+      runTotalDistance: 0,
+      activities: []
     }
   }
 
@@ -47,7 +50,10 @@ class LoggedIn extends React.Component {
         <h3> Total Run Distance = {this.state.runTotalDistance} km </h3>
         {this.state.activities
           ? (
-          <Activities activities={this.state.activities} />
+          <div>
+            <CalendarChart activities={this.state.activities} />
+            <Activities activities={this.state.activities} />
+          </div>
             )
           : (
           <h4> Loading Activities... </h4>
