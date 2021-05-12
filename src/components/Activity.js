@@ -1,9 +1,11 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 
+import { isCorrectType } from '../utils'
+
 export class Activity extends Component {
   render () {
-    if (this.props.activity.type !== 'Run') {
+    if (!isCorrectType(this.props.activity.type)) {
       return null
     }
     return (

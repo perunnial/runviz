@@ -67,9 +67,14 @@ export const getActivities = async (accessToken) => {
 export const getDates = async () => {
   const dates = []
   const endDate = new Date()
-  // TODO make this range configurable
+  // TODO - make this range configurable
   const startDate = new Date(endDate.getFullYear() - 2, endDate.getMonth(), endDate.getDate())
   dates.push(startDate)
   dates.push(endDate)
   return dates
+}
+
+export const isCorrectType = async (type) => {
+  // TODO - make this configurable to Run/Ride/etc
+  return (type === 'Run')
 }

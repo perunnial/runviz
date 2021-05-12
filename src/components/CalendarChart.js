@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 
-import { getDates } from '../utils'
+import { getDates, isCorrectType } from '../utils'
 
 import CalendarHeatmap from 'react-calendar-heatmap'
 import 'react-calendar-heatmap/dist/styles.css'
@@ -23,7 +23,7 @@ export class CalendarChart extends Component {
     // console.log(this.props.activities.length)
     for (let idx = 0; idx < this.props.activities.length; idx++) {
       const activity = this.props.activities[idx]
-      if (activity.type === 'Run') {
+      if (isCorrectType(activity.type)) {
         const k = activity.start_date_local.substring(0, 10)
         const v = activity.distance / 1000
         const rounded = Math.round(v * 10) / 10
