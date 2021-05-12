@@ -12,43 +12,59 @@ export class CalendarChart extends Component {
       endDate: '',
       values: []
     }
+    this.lastValLength = 0
   }
 
-  componentDidMount () {
-    const loadValues = async () => {
-      const endDate = new Date()
-      const startDate = new Date(endDate.getFullYear() - 1, endDate.getMonth(), endDate.getDate())
-
-      const dateVsDistance = {}
-      this.props.activities.forEach(activity => {
-        if (activity.type === 'Run') {
-          const k = activity.start_date_local.substring(0, 10)
-          const v = activity.distance / 1000
-          const rounded = Math.round(v * 10) / 10
-          if (k in dateVsDistance) {
-            dateVsDistance[k] += rounded
-          } else {
-            dateVsDistance[k] = rounded
-          }
+  loadValues () {
+    const dateVsDistance = {}
+    // console.log(this.props.activities.length)
+    for (let idx = 0; idx < this.props.activities.length; idx++) {
+      const activity = this.props.activities[idx]
+      if (activity.type === 'Run') {
+        const k = activity.start_date_local.substring(0, 10)
+        const v = activity.distance / 1000
+        const rounded = Math.round(v * 10) / 10
+        if (k in dateVsDistance) {
+          dateVsDistance[k] += rounded
+        } else {
+          dateVsDistance[k] = rounded
         }
-      })
-
-      const values = []
-      for (const k in dateVsDistance) {
-        values.push({ date: k, count: dateVsDistance[k] })
       }
+    }
+    // console.log(dateVsDistance)
 
+    const values = []
+    for (const k in dateVsDistance) {
+      values.push({ date: k, count: dateVsDistance[k] })
+    }
+    // console.log(values)
+    return values
+  }
+
+  /* To prepare the initial state of the component based on this.props,
+     it should be done in componentDidUpdate instead of componentDidMount.
+     Components aren't mounted with populated props from parent, only updated with them.
+  */
+  async componentDidUpdate () {
+    const endDate = new Date()
+    const startDate = new Date(endDate.getFullYear() - 1, endDate.getMonth(), endDate.getDate())
+    const values = this.loadValues()
+    // update state only conditionally to avoid infinite loop
+    // update if length of values has increased
+    if (values.length > this.lastValLength) {
+      this.lastValLength = values.length
       this.setState({
         startDate: startDate,
         endDate: endDate,
         values: values
       })
     }
-
-    loadValues()
   }
 
   render () {
+    // console.log(this)
+    // this is logged after value update
+
     return (
         <div>
         { this.state.values
@@ -66,6 +82,7 @@ export class CalendarChart extends Component {
     )
   }
 }
+
 CalendarChart.propTypes = {
   activities: PropTypes.array.isRequired
 }
