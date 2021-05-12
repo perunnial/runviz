@@ -62,14 +62,14 @@ export class CalendarChart extends Component {
     }
   }
 
-  getTitleForValue = (value) => {
-    if (!value || !value.date) {
-      return null
-    }
-    return `${value.date}: ${value.count} km`
-  }
-
   render () {
+    const getTitleForValue = (value) => {
+      if (!value || !value.date) {
+        return null
+      }
+      return `${value.date}: ${value.count} km`
+    }
+
     // console.log(this)
     // this is logged after value update
 
@@ -82,7 +82,7 @@ export class CalendarChart extends Component {
                 endDate={this.state.endDate}
                 values={this.state.values}
                 showWeekdayLabels={true}
-                titleForValue={this.getTitleForValue}
+                titleForValue={getTitleForValue}
                 />
             )
           : (
