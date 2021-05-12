@@ -15,6 +15,7 @@ export class CalendarChart extends Component {
       values: []
     }
     this.lastValLength = 0
+    this.maxValue = 0
   }
 
   loadValues () {
@@ -38,6 +39,9 @@ export class CalendarChart extends Component {
     const values = []
     for (const k in dateVsDistance) {
       values.push({ date: k, count: dateVsDistance[k] })
+      if (dateVsDistance[k] > this.maxValue) {
+        this.maxValue = dateVsDistance[k]
+      }
     }
     // console.log(values)
     return values
@@ -67,7 +71,15 @@ export class CalendarChart extends Component {
       if (!value || !value.date) {
         return null
       }
-      return `${value.date}: ${value.count} km`
+      return `${value.count} km on ${value.date}`
+    }
+
+    const getClassForValue = (value) => {
+      if (!value) {
+        return 'color-empty'
+      }
+      const scale = ((4 * value.count) / this.maxValue).toFixed(0)
+      return `color-github-${scale}`
     }
 
     // console.log(this)
@@ -83,6 +95,7 @@ export class CalendarChart extends Component {
                 values={this.state.values}
                 showWeekdayLabels={true}
                 titleForValue={getTitleForValue}
+                classForValue={getClassForValue}
                 />
             )
           : (
