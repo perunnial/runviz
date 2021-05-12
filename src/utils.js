@@ -40,11 +40,36 @@ export const getAthleteStats = async (accessToken, athleteId) => {
 
 export const getActivities = async (accessToken) => {
   try {
-    const request = 'https://www.strava.com/api/v3/athlete/activities'
-    const authHeader = { headers: { Authorization: `Bearer ${accessToken}` } }
-    const response = await axios.get(request, authHeader)
-    return response.data
+    const mergedActivities = []
+    const dates = await getDates()
+    // TODO - adjust the dates as per local timezone
+    const startDateTimestamp = parseInt(dates[0].getTime() / 1000).toFixed(0)
+    const endDateTimestamp = parseInt(dates[1].getTime() / 1000).toFixed(0)
+    const perPage = 200
+    let pageNum = 1
+
+    while (true) {
+      const request = `https://www.strava.com/api/v3/athlete/activities?before=${endDateTimestamp}&after=${startDateTimestamp}&page=${pageNum}&per_page=${perPage}`
+      const authHeader = { headers: { Authorization: `Bearer ${accessToken}` } }
+      const response = await axios.get(request, authHeader)
+      // returned blank response, so pages over
+      if (response.data.length === 0) {
+        return mergedActivities
+      }
+      mergedActivities.push(...response.data)
+      pageNum++
+    }
   } catch (error) {
     console.error(error)
   }
+}
+
+export const getDates = async () => {
+  const dates = []
+  const endDate = new Date()
+  // TODO make this range configurable
+  const startDate = new Date(endDate.getFullYear() - 2, endDate.getMonth(), endDate.getDate())
+  dates.push(startDate)
+  dates.push(endDate)
+  return dates
 }

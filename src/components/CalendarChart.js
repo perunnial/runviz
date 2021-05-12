@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 
+import { getDates } from '../utils'
+
 import CalendarHeatmap from 'react-calendar-heatmap'
 import 'react-calendar-heatmap/dist/styles.css'
 
@@ -46,16 +48,15 @@ export class CalendarChart extends Component {
      Components aren't mounted with populated props from parent, only updated with them.
   */
   async componentDidUpdate () {
-    const endDate = new Date()
-    const startDate = new Date(endDate.getFullYear() - 1, endDate.getMonth(), endDate.getDate())
+    const dates = await getDates()
     const values = this.loadValues()
     // update state only conditionally to avoid infinite loop
     // update if length of values has increased
     if (values.length > this.lastValLength) {
       this.lastValLength = values.length
       this.setState({
-        startDate: startDate,
-        endDate: endDate,
+        startDate: dates[0],
+        endDate: dates[1],
         values: values
       })
     }
