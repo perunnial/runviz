@@ -79,7 +79,7 @@ export class CalendarChart extends Component {
         return 'color-empty'
       }
       const scale = ((4 * value.count) / this.maxValue).toFixed(0)
-      return `color-runvizgreen-${scale}`
+      return `color-runviz-${scale}`
     }
 
     // console.log(this)
