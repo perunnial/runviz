@@ -46,7 +46,6 @@ class LoggedIn extends React.Component {
         <h2>LoggedIn</h2>
         <h3> {this.state.athleteName} </h3>
         <img src={this.state.athleteProfile} alt="athleteProfile"></img>
-        <h3> Total Run Distance = {this.state.runTotalDistance} km </h3>
         {this.state.activities
           ? (
           <div>

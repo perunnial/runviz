@@ -16,6 +16,7 @@ export class CalendarChart extends Component {
     }
     this.lastValLength = 0
     this.maxValue = 0
+    this.totalDistance = 0
   }
 
   loadValues () {
@@ -27,6 +28,7 @@ export class CalendarChart extends Component {
         const k = activity.start_date_local.substring(0, 10)
         const v = activity.distance / 1000
         const rounded = Math.round(v * 10) / 10
+        this.totalDistance += rounded
         if (k in dateVsDistance) {
           dateVsDistance[k] += rounded
         } else {
@@ -89,14 +91,17 @@ export class CalendarChart extends Component {
         <div>
         { this.state.values
           ? (
-                <CalendarHeatmap
-                startDate={this.state.startDate}
-                endDate={this.state.endDate}
-                values={this.state.values}
-                showWeekdayLabels={true}
-                titleForValue={getTitleForValue}
-                classForValue={getClassForValue}
-                />
+                <div>
+                  <h4> {this.totalDistance} km in the last 1000 days </h4>
+                  <CalendarHeatmap
+                  startDate={this.state.startDate}
+                  endDate={this.state.endDate}
+                  values={this.state.values}
+                  showWeekdayLabels={true}
+                  titleForValue={getTitleForValue}
+                  classForValue={getClassForValue}
+                  />
+                </div>
             )
           : (
             <h4> Loading Chart... </h4>
