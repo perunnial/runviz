@@ -3,7 +3,6 @@ import PropTypes from 'prop-types'
 
 import { getAthlete, getAthleteStats, getActivities } from '../utils'
 
-import Activities from './Activities'
 import CalendarChart from './CalendarChart'
 
 class LoggedIn extends React.Component {
@@ -52,7 +51,6 @@ class LoggedIn extends React.Component {
           ? (
           <div>
             <CalendarChart activities={this.state.activities} />
-            <Activities activities={this.state.activities} />
           </div>
             )
           : (
