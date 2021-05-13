@@ -92,13 +92,6 @@ export class CalendarChart extends Component {
         { this.state.values
           ? (
                 <div>
-                  <div className="row">
-                    <div className="col-1"></div>
-                    <div className="col-8">
-                      <p>{this.totalDistance} km in the last year</p>
-                    </div>
-                  </div>
-
                   <CalendarHeatmap
                   startDate={this.state.startDate}
                   endDate={this.state.endDate}
@@ -107,6 +100,9 @@ export class CalendarChart extends Component {
                   titleForValue={getTitleForValue}
                   classForValue={getClassForValue}
                   />
+                  <div className="text-center">
+                    <p>{this.totalDistance} km in the last year</p>
+                  </div>
                 </div>
             )
           : (
