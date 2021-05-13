@@ -30,7 +30,7 @@ class LoggedIn extends React.Component {
       this.setState(
         {
           athleteName: athleteResponse.firstname + ' ' + athleteResponse.lastname,
-          athleteProfile: athleteResponse.profile,
+          athleteProfile: athleteResponse.profile_medium,
           runTotalDistance: parseInt(athleteStatsResponse.all_run_totals.distance) / 1000,
           activities: activitiesResponse
         }
@@ -43,7 +43,7 @@ class LoggedIn extends React.Component {
   render () {
     return (
       <div>
-        <h3> Logged in: {this.state.athleteName} </h3>
+        <p> Logged in: {this.state.athleteName} </p>
         <img src={this.state.athleteProfile}></img>
         {this.state.activities
           ? (

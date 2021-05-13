@@ -92,7 +92,7 @@ export class CalendarChart extends Component {
         { this.state.values
           ? (
                 <div>
-                  <h4> {this.totalDistance} km in the last 1000 days </h4>
+                  <p> {this.totalDistance} km in the last 1000 days </p>
                   <CalendarHeatmap
                   startDate={this.state.startDate}
                   endDate={this.state.endDate}
