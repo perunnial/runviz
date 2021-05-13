@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import { getAthlete, getAthleteStats, getActivities } from '../utils'
+import { getAthlete, getActivities } from '../utils'
 
 import CalendarChart from './CalendarChart'
 
@@ -11,7 +11,6 @@ class LoggedIn extends React.Component {
     this.state = {
       athleteName: '',
       athleteProfile: '',
-      runTotalDistance: 0,
       activities: []
     }
   }
@@ -23,9 +22,6 @@ class LoggedIn extends React.Component {
       const athleteResponse = await getAthlete(this.props.location.state.accessToken)
       // console.log(athleteResponse)
 
-      const athleteStatsResponse = await getAthleteStats(this.props.location.state.accessToken, athleteResponse.id)
-      // console.log(athleteStatsResponse)
-
       const activitiesResponse = await getActivities(this.props.location.state.accessToken)
       // console.log(activitiesResponse)
 
@@ -34,7 +30,6 @@ class LoggedIn extends React.Component {
         {
           athleteName: athleteResponse.firstname + ' ' + athleteResponse.lastname,
           athleteProfile: athleteResponse.profile_medium,
-          runTotalDistance: parseInt(athleteStatsResponse.all_run_totals.distance) / 1000,
           activities: activitiesResponse
         }
       )
