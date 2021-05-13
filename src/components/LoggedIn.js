@@ -43,11 +43,17 @@ class LoggedIn extends React.Component {
 
     return (
       <div>
-        <div className="athleteInfo">
-          <p><small>Logged in: {this.state.athleteName} &nbsp;
-            <img className="athletePicture" src={this.state.athleteProfile}/> &nbsp;
-          </small></p>
-        </div>
+        {this.state.athleteName
+          ? (
+          <div className="athleteInfo">
+            <p><small>Logged in: {this.state.athleteName} &nbsp;
+              <img className="athletePicture" src={this.state.athleteProfile}/> &nbsp;
+            </small></p>
+          </div>
+            )
+          : (
+              null
+            )}
         {this.state.activities.length
           ? (
           <div>
