@@ -15,6 +15,16 @@ body {
     background-color: #b44e20 !important;
 }
 
+.athleteInfo {
+    text-align: right;
+}
+
+.athletePicture {
+    height: 32px;
+    width: 32px;
+    border-radius: 50%;
+}
+
 .react-calendar-heatmap .color-runviz-0 {
 fill: #fdc787;
 }

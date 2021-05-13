@@ -43,8 +43,11 @@ class LoggedIn extends React.Component {
   render () {
     return (
       <div>
-        <p> Logged in: {this.state.athleteName} </p>
-        <img src={this.state.athleteProfile}></img>
+        <div className="athleteInfo">
+          <p><small>Logged in: {this.state.athleteName} &nbsp;
+            <img className="athletePicture" src={this.state.athleteProfile}/> &nbsp;
+          </small></p>
+        </div>
         {this.state.activities
           ? (
           <div>
