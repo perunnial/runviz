@@ -10,7 +10,7 @@ export class Home extends React.Component {
 
   render () {
     return (
-      <div className="loginButtonContainer">
+      <div className="loginButtonContainer mt-5 mb-5">
         <button className="loginButton btn btn-primary active" onClick={this.doLogin}>Strava Login</button>
       </div>
     )
