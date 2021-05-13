@@ -98,7 +98,7 @@ export class CalendarChart extends Component {
                   classForValue={getClassForValue}
                   />
                   <div className="text-center">
-                    <p>{this.totalDistance} km in the last year</p>
+                    <p>{this.totalDistance.toFixed(0)} km in the last year</p>
                   </div>
                 </div>
             )
