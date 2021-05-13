@@ -4,6 +4,7 @@ import Home from './components/Home'
 import Intermediate from './components/Intermediate'
 import LoggedIn from './components/LoggedIn'
 import NotFound from './components/NotFound'
+import Footer from './Footer'
 
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
 
@@ -19,6 +20,7 @@ function App () {
           <Route component={NotFound} />
         </Switch>
       </div>
+      <Footer></Footer>
     </BrowserRouter>
   )
 }
