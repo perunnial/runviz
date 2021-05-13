@@ -11,7 +11,7 @@ function App () {
   return (
     <BrowserRouter>
       <div>
-        <h1>runviz</h1>
+        <h1 className="text-center">runviz</h1>
         <Switch>
           <Route exact path='/' component={Home} />
           <Route path='/intermediate' component={Intermediate} />

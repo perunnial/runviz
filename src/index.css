@@ -1,3 +1,20 @@
+body {
+    font-family: monospace;
+}
+
+.loginButtonContainer {
+    text-align: center;
+}
+
+.loginButton {
+    background-color: #fc5200 !important;
+    border-color: #fc5200 !important;
+}
+
+.loginButton:hover {
+    background-color: #b44e20 !important;
+}
+
 .react-calendar-heatmap .color-runviz-0 {
 fill: #fdc787;
 }
