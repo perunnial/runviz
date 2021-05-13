@@ -5,14 +5,13 @@ import Intermediate from './components/Intermediate'
 import LoggedIn from './components/LoggedIn'
 import NotFound from './components/NotFound'
 
-import { BrowserRouter, Route, Link, Switch } from 'react-router-dom'
+import { BrowserRouter, Route, Switch } from 'react-router-dom'
 
 function App () {
   return (
     <BrowserRouter>
       <div>
         <h1>runviz</h1>
-        <Link to="/">Home</Link>
         <Switch>
           <Route exact path='/' component={Home} />
           <Route path='/intermediate' component={Intermediate} />

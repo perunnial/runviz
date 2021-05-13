@@ -19,13 +19,13 @@ class LoggedIn extends React.Component {
   componentDidMount () {
     const fetchData = async () => {
       const athleteResponse = await getAthlete(this.props.location.state.accessToken)
-      console.log(athleteResponse)
+      // console.log(athleteResponse)
 
       const athleteStatsResponse = await getAthleteStats(this.props.location.state.accessToken, athleteResponse.id)
-      console.log(athleteStatsResponse)
+      // console.log(athleteStatsResponse)
 
       const activitiesResponse = await getActivities(this.props.location.state.accessToken)
-      console.log(activitiesResponse)
+      // console.log(activitiesResponse)
 
       this.setState(
         {
@@ -43,9 +43,8 @@ class LoggedIn extends React.Component {
   render () {
     return (
       <div>
-        <h2>LoggedIn</h2>
-        <h3> {this.state.athleteName} </h3>
-        <img src={this.state.athleteProfile} alt="athleteProfile"></img>
+        <h3> Logged in: {this.state.athleteName} </h3>
+        <img src={this.state.athleteProfile}></img>
         {this.state.activities
           ? (
           <div>

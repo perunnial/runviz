@@ -33,10 +33,7 @@ class Intermediate extends React.Component {
       />
     }
     return (
-      <div>
-          <h2>Intermediate</h2>
-          <h3>{this.state.accessToken}</h3>
-      </div>
+      null
     )
   }
 }
