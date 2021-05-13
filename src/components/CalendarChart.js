@@ -14,13 +14,13 @@ export class CalendarChart extends Component {
       endDate: '',
       values: []
     }
-    this.lastValLength = 0
     this.maxValue = 0
     this.totalDistance = 0
   }
 
-  loadValues () {
+  async loadValues () {
     const dateVsDistance = {}
+    // console.log('loadValues')
     // console.log(this.props.activities.length)
     for (let idx = 0; idx < this.props.activities.length; idx++) {
       const activity = this.props.activities[idx]
@@ -49,23 +49,20 @@ export class CalendarChart extends Component {
     return values
   }
 
-  /* To prepare the initial state of the component based on this.props,
-     it should be done in componentDidUpdate instead of componentDidMount.
-     Components aren't mounted with populated props from parent, only updated with them.
-  */
-  async componentDidUpdate () {
+  async componentDidMount () {
+    // console.log('calendarchart - comp did update')
+
     const dates = await getDates()
-    const values = this.loadValues()
-    // update state only conditionally to avoid infinite loop
-    // update if length of values has increased
-    if (values.length > this.lastValLength) {
-      this.lastValLength = values.length
-      this.setState({
-        startDate: dates[0],
-        endDate: dates[1],
-        values: values
-      })
-    }
+    const values = await this.loadValues()
+
+    // if (values.length > 0) {
+    // console.log('Setting state - calendarchart')
+    this.setState({
+      startDate: dates[0],
+      endDate: dates[1],
+      values: values
+    })
+    // }
   }
 
   render () {

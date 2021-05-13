@@ -17,6 +17,8 @@ class LoggedIn extends React.Component {
   }
 
   componentDidMount () {
+    // console.log('loggedin - comp did mount')
+
     const fetchData = async () => {
       const athleteResponse = await getAthlete(this.props.location.state.accessToken)
       // console.log(athleteResponse)
@@ -27,6 +29,7 @@ class LoggedIn extends React.Component {
       const activitiesResponse = await getActivities(this.props.location.state.accessToken)
       // console.log(activitiesResponse)
 
+      // console.log('Setting state - loggedin')
       this.setState(
         {
           athleteName: athleteResponse.firstname + ' ' + athleteResponse.lastname,
@@ -41,6 +44,8 @@ class LoggedIn extends React.Component {
   }
 
   render () {
+    // console.log(this)
+
     return (
       <div>
         <div className="athleteInfo">
@@ -48,7 +53,7 @@ class LoggedIn extends React.Component {
             <img className="athletePicture" src={this.state.athleteProfile}/> &nbsp;
           </small></p>
         </div>
-        {this.state.activities
+        {this.state.activities.length
           ? (
           <div>
             <CalendarChart activities={this.state.activities} />
