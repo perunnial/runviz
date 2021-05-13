@@ -95,7 +95,7 @@ export class CalendarChart extends Component {
                   <div className="row">
                     <div className="col-1"></div>
                     <div className="col-8">
-                      <p><small>{this.totalDistance} km in the last 1000 days</small></p>
+                      <p>{this.totalDistance} km in the last year</p>
                     </div>
                   </div>
 

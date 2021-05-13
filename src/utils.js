@@ -67,9 +67,8 @@ export const getActivities = async (accessToken) => {
 export const getDates = async () => {
   const dates = []
   const endDate = new Date()
-  const rangeDays = 1000 // because the last few months would not have much data due to pandemic
   // TODO - make this range configurable
-  const startDate = new Date(endDate.getTime() - (rangeDays * 24 * 60 * 60 * 1000))
+  const startDate = new Date(endDate.getFullYear() - 1, endDate.getMonth(), endDate.getDate())
   dates.push(startDate)
   dates.push(endDate)
   return dates
