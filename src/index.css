@@ -25,6 +25,10 @@ body {
     border-radius: 50%;
 }
 
+.text-orange {
+    color: #fc5200;
+}
+
 .react-calendar-heatmap .color-runviz-0 {
 fill: #fdc787;
 }

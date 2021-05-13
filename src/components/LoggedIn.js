@@ -22,14 +22,19 @@ class LoggedIn extends React.Component {
       const athleteResponse = await getAthlete(this.props.location.state.accessToken)
       // console.log(athleteResponse)
 
+      this.setState(
+        {
+          athleteName: athleteResponse.firstname + ' ' + athleteResponse.lastname,
+          athleteProfile: athleteResponse.profile_medium
+        }
+      )
+
       const activitiesResponse = await getActivities(this.props.location.state.accessToken)
       // console.log(activitiesResponse)
 
       // console.log('Setting state - loggedin')
       this.setState(
         {
-          athleteName: athleteResponse.firstname + ' ' + athleteResponse.lastname,
-          athleteProfile: athleteResponse.profile_medium,
           activities: activitiesResponse
         }
       )
@@ -41,6 +46,8 @@ class LoggedIn extends React.Component {
   render () {
     // console.log(this)
 
+    // no spinner while fetching athlete info because
+    // the spinner for activities will still be spinning
     return (
       <div>
         {this.state.athleteName
@@ -61,7 +68,11 @@ class LoggedIn extends React.Component {
           </div>
             )
           : (
-          <h4> Loading Activities... </h4>
+          <div className="d-flex justify-content-center">
+            <div className="spinner-border text-orange" role="status">
+              <span className="sr-only">Loading...</span>
+            </div>
+          </div>
             )}
       </div>
     )
