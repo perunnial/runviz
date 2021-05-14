@@ -96,6 +96,7 @@ export class CalendarChart extends Component {
                   showWeekdayLabels={true}
                   titleForValue={getTitleForValue}
                   classForValue={getClassForValue}
+                  gutterSize={4}
                   />
                   <div className="text-center">
                     <h6>You ran {this.totalDistance.toFixed(0)} km</h6>

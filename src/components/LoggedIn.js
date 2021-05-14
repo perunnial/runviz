@@ -53,7 +53,7 @@ class LoggedIn extends React.Component {
         {this.state.athleteName
           ? (
           <div className="athleteInfo">
-            <p><small>Logged in: {this.state.athleteName} &nbsp;
+            <p><small>{this.state.athleteName} &nbsp;
               <img className="athletePicture" src={this.state.athleteProfile}/> &nbsp;
             </small></p>
           </div>
