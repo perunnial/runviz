@@ -88,20 +88,24 @@ export class CalendarChart extends Component {
         <div>
         { this.state.values
           ? (
-                <div>
-                  <CalendarHeatmap
-                  startDate={this.state.startDate}
-                  endDate={this.state.endDate}
-                  values={this.state.values}
-                  showWeekdayLabels={true}
-                  titleForValue={getTitleForValue}
-                  classForValue={getClassForValue}
-                  gutterSize={4}
-                  />
-                  <div className="text-center">
-                    <h6>You ran {this.totalDistance.toFixed(0)} km</h6>
-                    <h6>in the last year!</h6>
+                <div className="row">
+                  <div className="col-1"></div>
+                  <div className="col-10">
+                    <CalendarHeatmap
+                      startDate={this.state.startDate}
+                      endDate={this.state.endDate}
+                      values={this.state.values}
+                      showWeekdayLabels={true}
+                      titleForValue={getTitleForValue}
+                      classForValue={getClassForValue}
+                      gutterSize={4}
+                    />
+                    <div className="text-center">
+                      <h6>You ran {this.totalDistance.toFixed(0)} km</h6>
+                      <h6>in the last year!</h6>
+                    </div>
                   </div>
+                  <div className="col-1"></div>
                 </div>
             )
           : (
