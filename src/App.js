@@ -10,7 +10,7 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom'
 
 function App () {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename="/runviz">
       <div>
         <h1 className="text-center">runviz</h1>
         <Switch>
