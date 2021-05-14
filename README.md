@@ -5,3 +5,5 @@
 Visualize run data on a calendar heat map.
 
 Deployed at https://perunnial.github.io/runviz/.
+
+![](demo.gif)
