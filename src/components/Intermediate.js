@@ -29,8 +29,7 @@ class Intermediate extends React.Component {
       return <Redirect to = {{
         pathname: '/loggedin',
         state: { accessToken: this.state.accessToken }
-      }}
-      />
+      }}/>
     }
     return (
       null

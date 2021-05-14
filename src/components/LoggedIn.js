@@ -16,12 +16,8 @@ class LoggedIn extends React.Component {
   }
 
   componentDidMount () {
-    // console.log('loggedin - comp did mount')
-
     const fetchData = async () => {
       const athleteResponse = await getAthlete(this.props.location.state.accessToken)
-      // console.log(athleteResponse)
-
       this.setState(
         {
           athleteName: athleteResponse.firstname + ' ' + athleteResponse.lastname,
@@ -30,22 +26,16 @@ class LoggedIn extends React.Component {
       )
 
       const activitiesResponse = await getActivities(this.props.location.state.accessToken)
-      // console.log(activitiesResponse)
-
-      // console.log('Setting state - loggedin')
       this.setState(
         {
           activities: activitiesResponse
         }
       )
     }
-
     fetchData()
   }
 
   render () {
-    // console.log(this)
-
     // no spinner while fetching athlete info because
     // the spinner for activities will still be spinning
     return (
@@ -61,6 +51,7 @@ class LoggedIn extends React.Component {
           : (
               null
             )}
+
         {this.state.activities.length
           ? (
           <div>
@@ -73,7 +64,8 @@ class LoggedIn extends React.Component {
               <span className="sr-only">Loading...</span>
             </div>
           </div>
-            )}
+            )
+        }
       </div>
     )
   }

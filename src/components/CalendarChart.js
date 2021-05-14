@@ -20,8 +20,6 @@ export class CalendarChart extends Component {
 
   async loadValues () {
     const dateVsDistance = {}
-    // console.log('loadValues')
-    // console.log(this.props.activities.length)
     for (let idx = 0; idx < this.props.activities.length; idx++) {
       const activity = this.props.activities[idx]
       if (isCorrectType(activity.type)) {
@@ -36,7 +34,6 @@ export class CalendarChart extends Component {
         }
       }
     }
-    // console.log(dateVsDistance)
 
     const values = []
     for (const k in dateVsDistance) {
@@ -45,24 +42,18 @@ export class CalendarChart extends Component {
         this.maxValue = dateVsDistance[k]
       }
     }
-    // console.log(values)
     return values
   }
 
   async componentDidMount () {
-    // console.log('calendarchart - comp did update')
-
     const dates = await getDates()
     const values = await this.loadValues()
 
-    // if (values.length > 0) {
-    // console.log('Setting state - calendarchart')
     this.setState({
       startDate: dates[0],
       endDate: dates[1],
       values: values
     })
-    // }
   }
 
   render () {
@@ -81,13 +72,10 @@ export class CalendarChart extends Component {
       return `color-runviz-${scale}`
     }
 
-    // console.log(this)
-    // this is logged after value update
-
     return (
         <div>
-        { this.state.values
-          ? (
+          { this.state.values
+            ? (
                 <div className="row">
                   <div className="col-1"></div>
                   <div className="col-10">
@@ -107,10 +95,11 @@ export class CalendarChart extends Component {
                   </div>
                   <div className="col-1"></div>
                 </div>
-            )
-          : (
+              )
+            : (
             <h4> Loading Chart... </h4>
-            )}
+              )
+          }
         </div>
     )
   }
