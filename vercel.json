@@ -1,4 +1,7 @@
 {
+    "github": {
+      "enabled": false
+    },
     "redirects": [
       { "source": "/intermediate", "destination": "/" },
       { "source": "/loggedin", "destination": "/" },
