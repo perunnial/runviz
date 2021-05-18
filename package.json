@@ -1,5 +1,4 @@
 {
-  "homepage": "https://perunnial.github.io/runviz",
   "name": "runviz",
   "version": "0.1.0",
   "private": true,
@@ -45,6 +44,6 @@
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-promise": "^4.3.1",
     "eslint-plugin-react": "^7.23.2",
-    "gh-pages": "^3.1.0"
+    "vercel": "^22.0.1"
   }
 }

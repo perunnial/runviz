@@ -1,7 +1,7 @@
 {
     "redirects": [
-      { "src": "/", "dest": "/" },
-      { "src": "/intermediate", "dest": "/" }
-      { "src": "/loggedin", "dest": "/" }
+      { "source": "/intermediate", "destination": "/" },
+      { "source": "/loggedin", "destination": "/" },
+      { "source": "/", "destination": "/" }
     ]
 }

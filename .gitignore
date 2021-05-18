@@ -128,3 +128,5 @@ yarn-error.log*
 
 # REST requests
 *.rest
+
+.vercel

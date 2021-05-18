@@ -4,6 +4,6 @@
 
 Visualize run data on a calendar heat map.
 
-Deployed at https://perunnial.github.io/runviz/.
+Deployed at https://runviz.vercel.app/runviz.
 
 ![](demo.gif)
