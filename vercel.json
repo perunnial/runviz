@@ -1,5 +1,5 @@
 {
-    "routes": [
+    "redirects": [
       { "src": "/", "dest": "/" },
       { "src": "/intermediate", "dest": "/" }
       { "src": "/loggedin", "dest": "/" }
